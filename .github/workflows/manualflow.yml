@@ -27,7 +27,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Checkmarx CxFlow Action 
+    - name: Checkmarx CxFlow Action Test
       uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.4 #Github Action version
       with:
         project: ${{ secrets.CHECKMARX_PROJECT }} # <-- Insert Checkmarx SAST Project Name
