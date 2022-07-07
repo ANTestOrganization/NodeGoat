@@ -37,6 +37,6 @@ jobs:
         path: results.pdf
     - name: Upload XML Artifact
       uses: actions/upload-artifact@master
-        with:
-          name: results.xml
-          path: results.xm
+      with:
+        name: results.xml
+        path: results.xm
