@@ -26,4 +26,4 @@ jobs:
         #CX_LOW: 1000
       run: |
         export CX_PROJECT_NAME=${{ github.event.repository.name }}
-        java jar /home/ec2-user/cxflow.jar -scan --cxflow.enabled-vulnerability-scanners="sast" --spring.profiles.active="sast"  --preset="$CX_PRESET" --cx-project=$CX_PROJECT_NAME --cx-team=$CX_TEAM --checkmarx.base-url= $CX_SERVER --chekmarx.version="8.9" --cxflow.break-build="false" --cxflow.bug-tracker="NONE"
+        java -jar /home/ec2-user/cxflow.jar -scan --cxflow.enabled-vulnerability-scanners="sast" --spring.profiles.active="sast"  --preset="$CX_PRESET" --cx-project=$CX_PROJECT_NAME --cx-team=$CX_TEAM --checkmarx.base-url= $CX_SERVER --chekmarx.version="8.9" --cxflow.break-build="false" --cxflow.bug-tracker="NONE"
