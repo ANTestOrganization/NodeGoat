@@ -1,0 +1,29 @@
+name: Checkmarx SAST Scan-CLI
+on:
+  push:
+    branches:
+      - master
+      - main
+    - 'feature/**'
+jobs:
+  Checkmarx-cxflow-cli-scan:
+    name: Run Checkmarx CLI Scan
+    runs-on: self-hosted
+    steps:
+    - name: Download CxFlow jar
+      run: wget -O ~/cxflow.jar https://github.com/checkmarx-ltd/cx-flow/releases/download/1.6.34/cx-flow-1.6.34.jar
+    - name: Make CxFlow executable
+      run: chmod +x ~/cxflow.jar
+    - name: Run CxFlow CxSAST Scan
+      env:
+        CX_SERVER: ${{ secrets.CHECKMARX_URL }}
+        CX_TEAM: CxServer
+        CX_PRESET: Checkmarx Default
+        CX_USER: ${{ secrets.CHECKMARX_USER }}
+        CX_PASSWORD: ${{ secrets.CHECKMARX_PASSWORD }}
+        #CX_HIGH: 100
+        #CX_MEDIUM: 500
+        #CX_LOW: 1000
+      run: |
+        export CX_PROJECT_NAME=${{ github.event.repository.name }}
+        java jar ~/cxflow.jar -scan --cxflow.enabled-vulnerability-scanners="sast" --spring.profiles.active="sast"  --preset=${{CX_PRESET}} --cx-project=${{CX_PROJECT_NAME}} --cx-team=${{CX_TEAM}} --checkmarx.base-url=${{CX_SERVER}} --chekmarx.version="8.9" --cxflow.break-build="false" --cxflow.bug-tracker="NONE"
