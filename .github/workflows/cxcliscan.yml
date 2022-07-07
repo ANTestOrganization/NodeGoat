@@ -13,7 +13,7 @@ jobs:
     - name: Download CxCLI Zip
       run: wget -O ~/cxcli.zip https://download.checkmarx.com/8.9.0/Plugins/CxConsolePlugin-8.90.0.zip
     - name: Unzip CxCLI Zip
-      run: unzip ~/cxcli.zip -d ~/cxcli
+      run: unzip ~/cxcli.zip -d ~/cxcli -y
     - name: Make CxCLI executable
       run: chmod +x ~/cxcli/runCxConsole.sh
     - uses: actions/checkout@v2
