@@ -11,7 +11,7 @@ name: Run Checkmarx CLI Scan
 runs-on: self-hosted
 steps:
 - name: Download CxCLI Zip
-run: wget -O ~/cxcli.zip https://download.checkmarx.com/9.4.0_GA/Plugins/CxConsolePlugin-1.1.14.zip
+  run: wget -O ~/cxcli.zip https://download.checkmarx.com/9.4.0_GA/Plugins/CxConsolePlugin-1.1.14.zip
 - name: Unzip CxCLI Zip
 run: unzip ~/cxcli.zip -d ~/cxcli
 - name: Make CxCLI executable
