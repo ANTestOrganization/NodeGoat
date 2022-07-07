@@ -22,7 +22,7 @@ jobs:
         CX_USER: ${{ secrets.CHECKMARX_USER }}
         CX_PASSWORD: ${{ secrets.CHECKMARX_PASSWORD }}
         #CX_HIGH: 100
-        #CX_MEDIUM: 500
+        #CX_MEDIUM: 600
         #CX_LOW: 1000
       run: |
         export CX_PROJECT_NAME=${{ github.event.repository.name }}
