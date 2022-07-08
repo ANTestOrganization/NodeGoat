@@ -26,4 +26,4 @@ jobs:
         #CX_LOW: 1000
       run: |
         export CX_PROJECT_NAME=${{ github.event.repository.name }}
-        sudo java -jar /home/ec2-user/cxflow.jar --scan --preset="$CX_PRESET" --cx-project=$CX_PROJECT_NAME --cx-team=$CX_TEAM --checkmarx.base-url=$CX_SERVER --checkmarx.version="8.9" --cxflow.break-build="false" --cxflow.bug-tracker="NONE" --app=$CX_PROJECT_NAME --f=./ --checkmarx.username=$CX_USER --checkmarx.password="$CX_PASSWORD"
+        sudo java -jar /home/ec2-user/cxflow.jar --scan --preset="$CX_PRESET" --cx-project=$CX_PROJECT_NAME --cx-team=$CX_TEAM --checkmarx.base-url="$CX_SERVER" --checkmarx.version="8.9" --cxflow.break-build="false" --cxflow.bug-tracker="NONE" --app=$CX_PROJECT_NAME --f=./ --checkmarx.username=$CX_USER --checkmarx.password="$CX_PASSWORD"
