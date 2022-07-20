@@ -26,5 +26,5 @@ jobs:
         #CX_LOW: 1000
       run: |
         export CX_PROJECT_NAME=${{ github.event.repository.name }}
-        sudo java -Xmx6g -jar /home/ec2-user/cxflow.jar --scan --github  --preset=Checkmarx Default --checkmarx.team=CxServer --checkmarx.base-url=http://44.193.212.247 --cxflow.break-build="false" --cxflow.bug-tracker="NONE" --checkmarx.username=admin --checkmarx.password=Mk19mod0. --github.url="https://github.com/ANTestOrganization/NodeGoat" --repo-url="https://github.com/ANTestOrganization/NodeGoat" --app=NodeGoat --cx-project=NodeGoat
+        sudo java -Xmx6g -jar /home/ec2-user/cxflow.jar --scan --github --github.token=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 --preset=Checkmarx Default --checkmarx.team=CxServer --checkmarx.base-url=http://44.193.212.247 --cxflow.break-build="false" --cxflow.bug-tracker="NONE" --checkmarx.username=admin --checkmarx.password=Mk19mod0. --github.url="https://github.com/ANTestOrganization/NodeGoat" --repo-url="https://github.com/ANTestOrganization/NodeGoat" --app=NodeGoat --cx-project=NodeGoat
         #--f="./NodeGoat"
