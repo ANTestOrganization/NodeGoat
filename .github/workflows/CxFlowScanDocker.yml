@@ -16,7 +16,7 @@ jobs:
         ~/cxcli/runCxConsole.sh Scan -CxServer $CX_SERVER -CxUser $CX_USER -CxPassword $CX_PASSWORD -ProjectName "$CX_TEAM\\$CX_PROJECT_NAME" -preset "$CX_PRESET" -LocationType folder -LocationPath $GITHUB_WORKSPACE -SASTHigh $CX_HIGH -SASTMedium $CX_MEDIUM -SASTLow $CX_LOW -ReportXML $GITHUB_WORKSPACE/results.xml -ReportPDF $GITHUB_WORKSPACE/results.pdf -verbose
       env:
         CX_SERVER: ${{ secrets.CHECKMARX_URL }}
-        CX_TEAM: ${{secrets.CHECKMARX_TEAM}}
+        CX_TEAM: ${{ secrets.CHECKMARX_TEAM }}
         CX_PRESET: "Checkmarx Default"
         CX_USER: ${{ secrets.CHECKMARX_USER }}
         CX_PASSWORD: ${{ secrets.CHECKMARX_PASSWORD }}
