@@ -2,8 +2,8 @@ name: Checkmarx SAST Scan-CLI
 on:
   push:
     branches:
-      - master
-      - main
+      #- master
+      #- main
       - 'feature/**'
 jobs:
   Checkmarx-cxflow-cli-scan:
