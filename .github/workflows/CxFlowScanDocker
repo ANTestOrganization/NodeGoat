@@ -1,0 +1,34 @@
+name: Checkmarx SAST Scan-CLI
+on:
+  push:
+    branches:
+      - main
+jobs:
+  Checkmarx-cli-scan:
+    name: Run Checkmarx CLI Scan
+    runs-on: self-hosted 
+    steps:     
+    - uses: actions/checkout@v2
+    - name: Run Checkmarx Scan
+      run: |
+        export CX_PROJECT_NAME= ${{ github.event.repository.name }}
+~/cxcli/runCxConsole.sh Scan -CxServer $CX_SERVER -CxUser $CX_USER -CxPassword $CX_PASSWORD -ProjectName "$CX_TEAM\\$CX_PROJECT_NAME" -preset "$CX_PRESET" -LocationType folder -LocationPath $GITHUB_WORKSPACE -SASTHigh $CX_HIGH -SASTMedium $CX_MEDIUM -SASTLow $CX_LOW -ReportXML $GITHUB_WORKSPACE/results.xml -ReportPDF $GITHUB_WORKSPACE/results.pdf -verbose
+      env:
+        CX_SERVER: ${{ secrets.CHECKMARX_URL }}
+        CX_TEAM: ${{ secrets.CHECKMARX_TEAM }}
+        CX_PRESET: ${{ secrets.CHECKMARX_PRESET }}
+        CX_USER: ${{ secrets.CHECKMARX_USER }}
+        CX_PASSWORD: ${{ secrets.CHECKMARX_PASSWORD }}
+        CX_HIGH: 100
+        CX_MEDIUM: 500
+        CX_LOW: 1000
+    - name: Upload PDF Artifact
+      uses: actions/upload-artifact@master
+      with:
+        name: results.pdf
+        path: results.pdf
+    - name: Upload XML Artifact
+      uses: actions/upload-artifact@master
+      with:
+        name: results.xml
+        path: results.xml
