@@ -7,7 +7,7 @@ on:
 jobs:
   Checkmarx-cli-scan:
     name: Run Checkmarx CLI Scan
-    runs-on: [self-hosted, rhel8base] 
+    runs-on: [self-hosted, rhel8base ] 
     steps:     
     - uses: actions/checkout@v2
     - name: Run Checkmarx Scan
