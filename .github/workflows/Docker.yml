@@ -32,8 +32,8 @@ jobs:
         project: NodeGoat # <-- Insert Checkmarx SAST Project Name
         team: ${{ secrets.CHECKMARX_TEAMS }}
         checkmarx_url: https://cxprivatecloud.checkmarx.net/ # To be stored in GitHub Secrets.
-        checkmarx_username: alan.nguyen@checkmarx.com # To be stored in GitHub Secrets.
-        checkmarx_password: Mk18mod0.. # To be stored in GitHub Secrets.
+        checkmarx_username: alan.nguyen@checkmarx.com
+        checkmarx_password: Mk18mod0..
         checkmarx_client_secret: ${{ secrets.CHECKMARX_CLIENT_SECRET }} # To be stored in GitHub Secrets.
         break_build: false
         scanners: sast
