@@ -30,7 +30,7 @@ jobs:
       uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.4 #Github Action versions
       with:
         project: NodeGoat # <-- Insert Checkmarx SAST Project Name
-        team: ${{ secrets.CHECKMARX_TEAMS }}
+        team: ${{ secrets.CHECKMARX_TEAMS}}
         checkmarx_url: http://54.163.20.244 # To be stored in GitHub Secrets.
         checkmarx_username: admin
         checkmarx_password: Mk18mod0.
