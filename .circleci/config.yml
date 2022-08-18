@@ -12,3 +12,47 @@ parameters:
   GHA_Meta:
     type: string
     default: ""
+
+executors:
+  hs_checkmarx:
+    <<: *defaults
+    docker:
+      - image: .../headspace/hs-checkmarx:latest
+jobs:
+  checkmarx:
+    executor: hs_checkmarx
+    parameters: # parameters that will be overriden for each repo
+      repo_name:
+        type: string
+      repo_url:
+        type: string
+        default: $CIRCLE_REPOSITORY_URL
+      branch:
+        type: string
+        default: master
+      cx_project:
+        type: string
+    steps:
+      - run:
+        command: cx_cli scan-with-report
+          --cx-user=$CHECKMARX_USER
+          --cx-pass=$CHECKMARX_PASS
+          --cx-secret=$CHECKMARX_CLIENT_SECRET
+          --jira-user=$CHECKMARX_JIRA_USER
+          --jira-token=$CHECKMARX_JIRA_TOKEN
+          --github-token=$CHECKMARX_GITHUB_TOKEN
+          --cx-project=<<parameters.cx_project>>
+          --repo-name=<<parameters.repo_name>>
+          --repo-url=<<parameters.repo_url>>
+         --branch=<<parameters.branch>>
+workflows:
+  checkmarx:
+  triggers:
+- schedule:
+cron: "0 0 1,15 * *" # every 2 weeks, time slot might differ per
+# repo in order to avoid hitting a limit
+# on a number of concurrent docker containers
+jobs:
+- checkmarx:
+repo_name: hs-content-service
+cx_project: API Content Service
