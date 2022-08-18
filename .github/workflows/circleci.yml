@@ -10,4 +10,4 @@ jobs:
         id: testproject
         uses: CircleCI-Public/trigger-circleci-pipeline-action@v1.0.5
         env:
-          CCI_TOKEN: 1d7152a8023c481852b897a2b792cfd8d777eee3
+          CCI_TOKEN: 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
