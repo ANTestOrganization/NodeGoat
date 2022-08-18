@@ -47,12 +47,7 @@ jobs:
          --branch=<<parameters.branch>>
 workflows:
   checkmarx:
-  triggers:
-- schedule:
-cron: "0 0 1,15 * *" # every 2 weeks, time slot might differ per
-# repo in order to avoid hitting a limit
-# on a number of concurrent docker containers
-jobs:
-- checkmarx:
-repo_name: hs-content-service
-cx_project: API Content Service
+    jobs:
+      - checkmarx:
+        repo_name: hs-content-service
+        cx_project: API Content Service
