@@ -35,7 +35,7 @@ jobs:
     steps:
       - run:
         command: cx_cli scan-with-report
-          --cx-user=$CHECKMARX_USER
+          --cx-user=alan.nguyen@checkmarx.com
           --cx-pass=$CHECKMARX_PASS
           --cx-secret=$CHECKMARX_CLIENT_SECRET
           --jira-user=$CHECKMARX_JIRA_USER
