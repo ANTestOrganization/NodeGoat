@@ -1,0 +1,12 @@
+on:
+  release:
+    types: [published]
+jobs:
+  trigger-circleci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: alansSASTtest
+        id: testproject
+        uses: circleci/trigger_circleci_pipeline@v1.0
+        env:
+          CCI_TOKEN: 1d7152a8023c481852b897a2b792cfd8d777eee3
