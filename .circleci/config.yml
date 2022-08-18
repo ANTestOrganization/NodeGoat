@@ -46,8 +46,8 @@ jobs:
           --repo-url=<<parameters.repo_url>>
          --branch=<<parameters.branch>>
 workflows:
-  checkmarx:
+  release:
+    when:
+      equal: [ "release", << pipeline.parameters.GHA_Event >>]
     jobs:
-      - checkmarx:
-        repo_name: hs-content-service
-        cx_project: API Content Service
+      - checkmarx
