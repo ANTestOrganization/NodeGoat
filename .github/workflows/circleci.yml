@@ -8,6 +8,6 @@ jobs:
     steps:
       - name: alansSASTtest
         id: testproject
-        uses: CircleCI-Public/trigger-circleci-pipeline-action@v1.0.5 
+        uses: CircleCI-Public/trigger-circleci-pipeline-action@v1.0.5
         env:
           CCI_TOKEN: 5db02326087ecab10f3626d96bc9adafa4742e84
