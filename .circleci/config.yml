@@ -21,16 +21,16 @@ jobs:
   checkmarx:
     executor: hs_checkmarx
     parameters: # parameters that will be overriden for each repo
-      #repo_name:
-      #  type: string
-      #repo_url:
-      #  type: string
-      #  default: $CIRCLE_REPOSITORY_URL
+      repo_name:
+        type: string
+      repo_url:
+        type: string
+        default: $CIRCLE_REPOSITORY_URL
       branch:
         type: string
         default: master
-      #cx_project:
-      #  type: string
+      cx_project:
+        type: string
     steps:
       - run:
           command: cx_cli scan-with-report
@@ -41,9 +41,9 @@ jobs:
             --jira-token=$CHECKMARX_JIRA_TOKEN
             --github-token=$CHECKMARX_GITHUB_TOKEN
             --cx-project="dummy"
-          #--repo-name="dummy"
-          #--repo-url=<<parameters.repo_url>>
-         #--branch=<<parameters.branch>>
+            --repo-name="dummy"
+            --repo-url="dummy"
+            --branch="dummy"
 workflows:
   release:
     when:
