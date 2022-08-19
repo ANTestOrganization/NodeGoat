@@ -33,7 +33,7 @@ jobs:
       #  type: string
     steps:
       - run:
-        command: cx_cli scan-with-report
+          command: cx_cli scan-with-report
           --cx-user=alan.nguyen@checkmarx.com
           --cx-pass=$CHECKMARX_PASS
           --cx-secret=$CHECKMARX_CLIENT_SECRET
