@@ -81,7 +81,9 @@ const index = (app, db) => {
         });
     });
     
-    sanitize(req) => {}
+    sanitize(req) => {
+        return req
+    }
 
     app.get("/tutorial/:page", (req, res) => {
         sanitize(req)
