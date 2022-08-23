@@ -80,8 +80,11 @@ const index = (app, db) => {
             environmentalScripts
         });
     });
+    
+    sanitize(req) => {}
 
     app.get("/tutorial/:page", (req, res) => {
+        sanitize(req)
         const {
             page
         } = req.params
