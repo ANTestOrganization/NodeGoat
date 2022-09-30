@@ -32,7 +32,7 @@ jobs:
         team: CxServer\\SP\\Company\\ANTestOrganization
         checkmarx_url: http://44.193.212.247/ # To be stored in GitHub Secrets.
         checkmarx_username: admin
-        checkmarx_password: Mk19mod0.
+        checkmarx_password: ********
         checkmarx_client_secret: ${{ secrets.CHECKMARX_CLIENT_SECRET }} # To be stored in GitHub Secrets.
         break_build: false
         scanners: sast
