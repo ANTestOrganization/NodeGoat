@@ -17,10 +17,10 @@ name: Checkmarx SAST Scan
 on:
   push:
     branches:
-     - /master1
+     - master1
   pull_request:
     branches:
-     - /master1
+     - master1
 
 jobs:
   build:
