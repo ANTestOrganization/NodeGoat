@@ -25,7 +25,7 @@ on:
 jobs:
   build:
     name: CHECKMARX
-    runs-on: [self-hosted, rhel8base]
+    runs-on: [ubuntu-latest]
     permissions:
       contents: read
       issues: write
