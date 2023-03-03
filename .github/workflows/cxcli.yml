@@ -6,9 +6,9 @@ on:
 jobs:
   Checkmarx-cxflow-cli-scan:
     name: Run Checkmarx CLI Scan
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
-    - name: Download CxFlow jar
+    - name: Download CxOne CLI
       run: |
         wget -q https://github.com/Checkmarx/ast-cli/releases/download/2.0.42/ast-cli_2.0.42_linux_x64.tar.gz -O cli.zip
         tar -xzvf ast-cli_<Version>_linux_x64.tar.gz
