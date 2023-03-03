@@ -14,13 +14,7 @@ jobs:
         tar -xzvf cli.tar.gz
         rm -rf cli.tar.gz
     - name: Run CxFlow CxSAST Scan
-      env:
-        CX_SERVER: ${{ secrets.CHECKMARX_URL }}
-        CX_TEAM: CxServer
-        CX_PRESET: Checkmarx Default
-        CX_USER: ${{ secrets.CHECKMARX_USER }}
-        CX_PASSWORD: ${{ secrets.CHECKMARX_PASSWORD }}
       run: |
         export CX_PROJECT_NAME=${{ github.event.repository.name }}
-        ./cx
+        ./cx --base-uri https://ast.checkmarx.net --tenant prod_na_testing --scan-create --project-name NodeGoatAlan --file-source https://github.com/my-org/my-repo --branch main
 
