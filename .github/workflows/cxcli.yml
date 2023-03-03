@@ -16,5 +16,5 @@ jobs:
     - name: Run CxFlow CxSAST Scan
       run: |
         export CX_PROJECT_NAME=${{ github.event.repository.name }}
-        ./cx --base-uri https://ast.checkmarx.net --tenant prod_na_testing scan create --project-name NodeGoatAlan --file-source https://github.com/my-org/my-repo --branch main
+        ./cx --base-uri https://ast.checkmarx.net --tenant prod_na_testing --client-id hidden_variable --client-secret hidden_variable scan create --project-name NodeGoatAlan --file-source https://github.com/my-org/my-repo --branch main
 
