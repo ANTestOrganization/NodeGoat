@@ -1,0 +1,29 @@
+name: Checkmarx SAST Scan-CLI
+on:
+  push:
+    branches:
+      - master1
+jobs:
+  Checkmarx-cxflow-cli-scan:
+    name: Run Checkmarx CLI Scan
+    runs-on: self-hosted
+    steps:
+    - name: Download CxFlow jar
+      run: |
+        wget -q https://github.com/Checkmarx/ast-cli/releases/download/2.0.42/ast-cli_2.0.42_linux_x64.tar.gz -O cli.zip
+        tar -xzvf ast-cli_<Version>_linux_x64.tar.gz
+        rm -rf cli.zip
+    - name: Make CxFlow executable
+      run: chmod +x ~/cx
+    - name: Run CxFlow CxSAST Scan
+      env:
+        CX_SERVER: ${{ secrets.CHECKMARX_URL }}
+        CX_TEAM: CxServer
+        CX_PRESET: Checkmarx Default
+        CX_USER: ${{ secrets.CHECKMARX_USER }}
+        CX_PASSWORD: ${{ secrets.CHECKMARX_PASSWORD }}
+        #CX_HIGH: 100
+        #CX_MEDIUM: 500
+        #CX_LOW: 1000
+      run: |
+        export CX_PROJECT_NAME=${{ github.event.repository.name }}
