@@ -2,7 +2,7 @@ name: Checkmarx SAST Scan-CLI
 on:
   push:
     branches:
-     - feature
+     - fakebranch
 jobs:
   Checkmarx-cli-scan:
     name: Run Checkmarx CLI Scan
