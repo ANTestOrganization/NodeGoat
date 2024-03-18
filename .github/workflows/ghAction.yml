@@ -35,7 +35,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Checkmarx CxFlow Action
-      uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.4 #Github Action versions
+      uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.9 #Github Action versions
       with:
         project: ${{ github.event.repository.name }} 
         team: CxServer/SP/America/PSNA/AlanNguyen	
