@@ -38,7 +38,7 @@ jobs:
       uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.4 #Github Action versions
       with:
         project: NodeGoat 
-        team: CxServer/SP/America/PSNA/AlanNguyen	
+        team: /CxServer/SP/America/PSNA/AlanNguyen	
         checkmarx_url: ${{ secrets.CHECKMARX_URL }} # To be stored in GitHub Secrets.
         checkmarx_username: ${{ secrets.CHECKMARX_USER }}
         checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }}
@@ -46,7 +46,7 @@ jobs:
         break_build: false
         scanners: sast
         bug_tracker: Sarif
-        params: --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --cx-flow.filterSeverity --cx-flow.filterCategory  --checkmarx.disable-clubbing=true --checkmarx.version=8.9 --checkmarx.scope=sast_rest_api --checkmarx.client-id=resource_owner_client
+        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --cx-flow.filterSeverity --cx-flow.filterCategory  --checkmarx.disable-clubbing=true --checkmarx.version=8.9 --checkmarx.scope=sast_rest_api --checkmarx.client-id=resource_owner_client
     - name: Upload SARIF file
       uses: github/codeql-action/upload-sarif@v1
       with:
