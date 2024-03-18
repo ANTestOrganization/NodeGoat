@@ -2,7 +2,7 @@ name: Kics Scan
 on:
   push:
     branches:
-      - master1
+      - master
 jobs:
   Checkmarx-kics-scan:
     name: Run Checkmarx KICS Scan
