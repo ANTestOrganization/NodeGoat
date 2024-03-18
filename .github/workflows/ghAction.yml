@@ -39,9 +39,9 @@ jobs:
       with:
         project: NodeGoat # <-- Insert Checkmarx SAST Project Name
         team: CxServer\\SP\\Company\\ANTestOrganization
-        checkmarx_url: http://44.193.212.247/ # To be stored in GitHub Secrets.
-        checkmarx_username: username_here
-        checkmarx_password: password_secret_variable_here
+        checkmarx_url: ${{ secrets.CHECKMARX_URL }} # To be stored in GitHub Secrets.
+        checkmarx_username: ${{ secrets.CHECKMARX_USER }}
+        checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }}
         checkmarx_client_secret: ${{ secrets.CHECKMARX_CLIENT_SECRET }} # To be stored in GitHub Secrets.
         break_build: false
         scanners: sast
