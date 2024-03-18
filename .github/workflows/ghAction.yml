@@ -46,7 +46,7 @@ jobs:
         break_build: false
         scanners: sast
         bug_tracker: Sarif
-        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --cx-flow.filterSeverity --cx-flow.filterCategory  --checkmarx.disable-clubbing=true --checkmarx.version=9.6 --checkmarx.scope=sast_rest_api --checkmarx.client-id=resource_owner_client --checkmarx.cx-branch=true --default-branch=main
+        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --cx-flow.filterSeverity --cx-flow.filterCategory  --checkmarx.disable-clubbing=true --checkmarx.version=9.6 --checkmarx.scope=sast_rest_api --checkmarx.client-id=resource_owner_client --checkmarx.cx-branch=true --default-branch=master1
     - name: Upload SARIF file
       uses: github/codeql-action/upload-sarif@v1
       with:
