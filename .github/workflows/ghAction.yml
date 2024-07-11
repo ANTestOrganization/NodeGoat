@@ -43,7 +43,7 @@ jobs:
         checkmarx_username: ${{ secrets.CHECKMARX_USER }}
         checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }}
         checkmarx_client_secret: ${{ secrets.CHECKMARX_CLIENT_SECRET }} # To be stored in GitHub Secrets.
-        break_build: false
+        break_build: true
         scanners: sast
         bug_tracker: Sarif
         params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref_name }} --cx-flow.filterSeverity --cx-flow.filterCategory  --checkmarx.disable-clubbing=true --checkmarx.version=9.6 --checkmarx.scope=sast_rest_api --checkmarx.client-id=resource_owner_client --checkmarx.cx-branch=true --default-branch=master1
