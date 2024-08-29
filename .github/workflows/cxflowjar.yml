@@ -4,21 +4,31 @@ on:
     branches:
       - master*
 jobs:
-  Checkmarx-cxflow-cli-scan:
-    name: Run Checkmarx CLI Scan
+  build:
+    name: CHECKMARX
     runs-on: [ubuntu-latest]
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
+      security-events: write
     steps:
-    - name: Download CxFlow jar
-      run: wget -O ~/cxflow.jar https://github.com/checkmarx-ltd/cx-flow/releases/download/1.7.03/cx-flow-1.7.03.jar
-    - name: Make CxFlow executable
-      run: chmod +x ~/cxflow.jar
-    - name: Run CxFlow CxSAST Scan
-      env:
-        CX_SERVER: ${{ secrets.CHECKMARX_URL }}
-        CX_TEAM: CxServer
-        CX_PRESET: Checkmarx Default
-        CX_USER: ${{ secrets.CHECKMARX_USER }}
-        CX_PASSWORD: ${{ secrets.CHECKMARX_PASSWORD }}
-      run: |
-        export CX_PROJECT_NAME=${{ github.event.repository.name }}
-        sudo java -Xmx6g -jar /home/ec2-user/cxflow.jar --scan --github --github.token=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 --namespace=ANTestOrganization --preset=Checkmarx Default --checkmarx.team="CxServer\\SP\\Company" --cx-flow.comment="comment_here" --checkmarx.base-url=http://44.193.212.247 --cxflow.bug-tracker="NONE" --checkmarx.username=admin --checkmarx.password=Mk19mod0. --repo-url=https://github.com/ANTestOrganization/NodeGoat.git --app=NodeGoat --branch=master --cx-project=NodeGoat --checkmarx.multitenant=true 
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Checkmarx CxFlow Action
+      uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.9 #Github Action versions
+      with:
+        project: ${{ github.event.repository.name }} 
+        team: CxServer/SP/America/PSNA/AlanNguyen	
+        checkmarx_url: ${{ secrets.CHECKMARX_URL }} # To be stored in GitHub Secrets.
+        checkmarx_username: ${{ secrets.CHECKMARX_USER }}
+        checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }}
+        checkmarx_client_secret: ${{ secrets.CHECKMARX_CLIENT_SECRET }} # To be stored in GitHub Secrets.
+        break_build: false
+        scanners: sast
+        bug_tracker: Sarif
+        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref_name }} --cx-flow.comment="tester" --cx-flow.filterSeverity --cx-flow.filterCategory  --checkmarx.disable-clubbing=true --checkmarx.version=9.6 --checkmarx.scope=sast_rest_api --checkmarx.client-id=resource_owner_client --checkmarx.cx-branch=true --default-branch=master1
+    - name: Upload SARIF file
+      uses: github/codeql-action/upload-sarif@v1
+      with:
+        sarif_file: cx.sarif
