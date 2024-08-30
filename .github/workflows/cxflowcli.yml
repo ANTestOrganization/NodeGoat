@@ -15,10 +15,10 @@ jobs:
     - name: Run CxFlow CxSAST Scan
       env:
         CX_SERVER: ${{ secrets.CHECKMARX_URL }}
-        CX_TEAM: CxServer
+        CX_TEAM: CxServer/SP/America/PSNA/AlanNguyen
         CX_PRESET: Checkmarx Default
         CX_USER: ${{ secrets.CHECKMARX_USER }}
         CX_PASSWORD: ${{ secrets.CHECKMARX_PASSWORD }}
       run: |
         export CX_PROJECT_NAME=${{ github.event.repository.name }}
-        sudo java -Xmx6g -jar ~/cxflow.jar --scan --github --github.token=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 --preset=Checkmarx Default --checkmarx.team="\/CxServer/SP/America/PSNA/AlanNguyen" --checkmarx.base-url=https://cxprivatecloud.checkmarx.net --cxflow.bug-tracker="NONE" --checkmarx.username=alan.nguyen@checkmarx.com --checkmarx.password=Mk18mod0.. --repo-url=https://github.com/ANTestOrganization/NodeGoat.git --app=NodeGoat --branch=master --cx-project=NodeGoat --checkmarx.multitenant=true --comment="comment_for_cli1"
+        sudo java -Xmx6g -jar ~/cxflow.jar --scan --github --github.token=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 --preset=Checkmarx Default --checkmarx.base-url=https://cxprivatecloud.checkmarx.net --cxflow.bug-tracker="NONE" --checkmarx.username=alan.nguyen@checkmarx.com --checkmarx.password=Mk18mod0.. --repo-url=https://github.com/ANTestOrganization/NodeGoat.git --app=NodeGoat --branch=master --cx-project=NodeGoat --checkmarx.multitenant=true --comment="comment_for_cli1"
