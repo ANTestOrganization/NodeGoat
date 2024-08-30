@@ -2,7 +2,7 @@ name: Checkmarx SAST Scan-CLI
 on:
   push:
     branches:
-      - master*
+      - none
 jobs:
   build:
     name: CHECKMARX
