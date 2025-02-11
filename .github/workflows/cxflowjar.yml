@@ -20,7 +20,7 @@ jobs:
       with:
         project: ${{ github.event.repository.name }} 
         team: CxServer/SP/America/PSNA/AlanNguyen	
-        checkmarx_url: ${{ secrets.CHECKMARX_URL }} # To be stored in GitHub Secrets.
+        checkmarx_url: http://54.197.2.162 # To be stored in GitHub Secrets.
         checkmarx_username: ${{ secrets.CHECKMARX_USER }}
         checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }}
         checkmarx_client_secret: ${{ secrets.CHECKMARX_CLIENT_SECRET }} # To be stored in GitHub Secrets.
