@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master1
+      - dev1
 jobs:
   build:
     name: CHECKMARX
