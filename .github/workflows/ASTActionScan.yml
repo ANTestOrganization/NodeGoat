@@ -17,4 +17,4 @@ jobs:
           base_uri: https://ast.checkmarx.net/
           cx_tenant: alan_nguyen_test
           cx_client_id: "cx1 actions"
-          cx_client_secret: "sBRPe8dVSuyarOR99UKEtmSi3PT31CB5"   
+          cx_client_secret: "sBRPe8dVSuyarOR99UKEtmSi3PT31CB5"     
